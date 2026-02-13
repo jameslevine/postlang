@@ -1,5 +1,5 @@
 {
-  "name": "@jameslevine/postlang",
+  "name": "post-lang",
   "version": "1.0.0",
   "description": "A DSL for writing LinkedIn posts that don't suck",
   "main": "dist/index.js",

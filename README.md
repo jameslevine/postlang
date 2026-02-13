@@ -9,13 +9,13 @@ LinkedIn is drowning in AI-generated slop. PostLang enforces structure, requires
 ## Installation
 
 ```bash
-npm install -g @jameslevine/postlang
+npm install -g post-lang
 ```
 
 Or use directly with npx:
 
 ```bash
-npx @jameslevine/postlang posts/my-post.post
+npx post-lang posts/my-post.post
 ```
 
 ## Quick Start
