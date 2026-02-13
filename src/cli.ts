@@ -10,7 +10,7 @@
  */
 
 import * as fs from 'fs';
-import { compile, validate, analyze, postlang } from '../src';
+import { compile, analyze, postlang } from './index';
 
 function printUsage(): void {
   console.log(`

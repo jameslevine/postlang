@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "postlang": "./bin/cli.js"
+    "postlang": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
@@ -36,7 +36,6 @@
   },
   "files": [
     "dist",
-    "bin",
     "docs",
     "examples"
   ],
