@@ -1,0 +1,51 @@
+{
+  "name": "postlang",
+  "version": "1.0.0",
+  "description": "A DSL for writing LinkedIn posts that don't suck",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "postlang": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "lint": "eslint 'src/**/*.ts'",
+    "compile": "ts-node bin/cli.ts",
+    "validate": "ts-node bin/cli.ts --validate",
+    "analyze": "ts-node bin/cli.ts --analyze"
+  },
+  "keywords": [
+    "linkedin",
+    "dsl",
+    "content",
+    "writing",
+    "compiler",
+    "social-media"
+  ],
+  "author": "James Levine",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jameslevine/postlang.git"
+  },
+  "homepage": "https://github.com/jameslevine/postlang#readme",
+  "bugs": {
+    "url": "https://github.com/jameslevine/postlang/issues"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "docs",
+    "examples"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  }
+}
