@@ -29,7 +29,7 @@ export interface PostLangAST {
   insight: string;
   context?: string;
   credential?: string;
-  source: { title: string; url: string };
+  source: { title: string; url: string; credibility: string };
   limits?: PostLangLimits;
 }
 
@@ -194,14 +194,19 @@ export class PostLangCompiler {
 
       // @ = Source
       if (firstChar === '@') {
-        const match = line.match(/^@\s*"([^"]+)"\s*\|\s*(\S+)/);
+        const match = line.match(
+          /^@\s*"([^"]+)"\s*\|\s*(\S+)\s*\|\s*"([^"]+)"/,
+        );
         if (match) {
           ast.source = {
             title: match[1],
             url: match[2],
+            credibility: match[3],
           };
         } else {
-          errors.push(`Line ${lineNum}: Invalid source. Use @ "Title" | url`);
+          errors.push(
+            `Line ${lineNum}: Invalid source. Use @ "Title" | url | "why this source is credible"`,
+          );
         }
         continue;
       }
@@ -344,6 +349,7 @@ export class PostLangCompiler {
 
     // Source
     lines.push(`Source: ${ast.source.title}`);
+    lines.push(`[${ast.source.credibility}]`);
     const displayUrl = ast.source.url
       .replace(/^https?:\/\//, '')
       .replace(/^www\./, '');

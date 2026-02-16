@@ -49,7 +49,7 @@ evidence    = "+" , value , "|" , string ;
 insight     = ">" , string ;
 context     = "?" , string ;
 credential  = "*" , string ;
-source      = "@" , string , "|" , url ;
+source      = "@" , string , "|" , url , "|" , string ;
 comment     = "//" , { any } ;
 string      = '"' , { char } , '"' ;
 value       = { char - "|" } ;
@@ -240,24 +240,33 @@ Optional statement of qualification.
 
 ### Source (`@`)
 
-Attribution for the content.
+Attribution for the content with credibility statement.
 
 **Syntax:**
 
 ```postlang
-@ "<title>" | <url>
+@ "<title>" | <url> | "<credibility>"
 ```
 
 **Constraints:**
 
 - Title is required
 - URL must be valid (http:// or https://)
+- Credibility statement is required (explains why the source is trustworthy)
 - Cannot contain emojis
+
+**Credibility Examples:**
+
+- `"peer-reviewed paper from Nature"`
+- `"official documentation from AWS"`
+- `"research preprint from arXiv, Feb 2026"`
+- `"industry report from Gartner"`
+- `"primary source data from company blog"`
 
 **Example:**
 
 ```postlang
-@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281
+@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281 | "peer-reviewed preprint from arXiv"
 ```
 
 ## Validation Rules
@@ -337,6 +346,7 @@ Results:
 [<credential>]
 
 Source: <source_title>
+[<credibility>]
 <source_url_without_protocol>
 ```
 
@@ -361,7 +371,7 @@ Returned when syntax is invalid:
 - `Line N: Invalid claim. Use ! "Your claim"`
 - `Line N: Invalid evidence. Use + value | "context"`
 - `Line N: Invalid insight. Use > "Your insight"`
-- `Line N: Invalid source. Use @ "Title" | url`
+- `Line N: Invalid source. Use @ "Title" | url | "why this source is credible"`
 
 ### Validation Errors
 
@@ -421,7 +431,7 @@ cat file.post | postlang compile --stdin
 ! "Claim"
 + 10% | "improvement"
 > "Insight"
-@ "Source" | https://example.com
+@ "Source" | https://example.com | "peer-reviewed research"
 ```
 
 ### Full Featured Post
@@ -440,7 +450,7 @@ cat file.post | postlang compile --stdin
 + 45% | "real-world improvement"
 > "Verify outputs at inference instead of training bigger models"
 * "10 years building AI systems at AWS"
-@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281
+@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281 | "peer-reviewed preprint from arXiv"
 ```
 
 ### Output
@@ -462,10 +472,15 @@ Verify outputs at inference instead of training bigger models.
 [10 years building AI systems at AWS]
 
 Source: Scaling Verification vs Policy Learning
+[peer-reviewed preprint from arXiv]
 arxiv.org/abs/2602.12281
 ```
 
 ## Version History
+
+- **v1.1** - Source credibility
+  - Added required credibility statement to source (`@`)
+  - Output now includes credibility in brackets
 
 - **v1.0** - Initial release
   - Core syntax with 8 symbols

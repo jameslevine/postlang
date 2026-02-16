@@ -29,7 +29,7 @@ Create a file `my-post.post`:
 + 13% | "out-of-distribution improvement"
 + 45% | "real-world improvement"
 > "Verify outputs at inference instead of training bigger models"
-@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281
+@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281 | "peer-reviewed preprint from arXiv"
 ```
 
 Compile it:
@@ -53,21 +53,22 @@ Results:
 Verify outputs at inference instead of training bigger models.
 
 Source: Scaling Verification vs Policy Learning
+[peer-reviewed preprint from arXiv]
 arxiv.org/abs/2602.12281
 ```
 
 ## Syntax
 
-| Symbol | Name       | Required  | Description                |
-| ------ | ---------- | --------- | -------------------------- |
-| `^`    | Limit      | No        | Custom character limits    |
-| `#`    | Title      | Yes       | Hook (max 80 chars)        |
-| `!`    | Claim      | Yes       | Main point (max 150)       |
-| `+`    | Evidence   | Yes (1-5) | Data: `value \| "context"` |
-| `>`    | Insight    | Yes       | Takeaway (max 120)         |
-| `?`    | Context    | No        | Background info            |
-| `*`    | Credential | No        | Why you're qualified       |
-| `@`    | Source     | Yes       | Attribution with URL       |
+| Symbol | Name       | Required  | Description                          |
+| ------ | ---------- | --------- | ------------------------------------ |
+| `^`    | Limit      | No        | Custom character limits              |
+| `#`    | Title      | Yes       | Hook (max 80 chars)                  |
+| `!`    | Claim      | Yes       | Main point (max 150)                 |
+| `+`    | Evidence   | Yes (1-5) | Data: `value \| "context"`           |
+| `>`    | Insight    | Yes       | Takeaway (max 120)                   |
+| `?`    | Context    | No        | Background info                      |
+| `*`    | Credential | No        | Why you're qualified                 |
+| `@`    | Source     | Yes       | Attribution with URL and credibility |
 
 ## CLI Commands
 
@@ -99,7 +100,7 @@ const result = compile(`
 ! "Your claim"
 + 22% | "improvement"
 > "Your insight"
-@ "Source" | https://example.com
+@ "Source" | https://example.com | "why this source is credible"
 `);
 
 if (result.success) {

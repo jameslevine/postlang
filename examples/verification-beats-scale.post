@@ -1,8 +1,9 @@
-// PostLang - concise syntax
+// PostLang Example: Research paper summary with source credibility
+
 # "Verification beats scale for AI reliability"
 ! "Test-time verification outperforms larger model training"
 + 22% | "in-distribution improvement"
 + 13% | "out-of-distribution improvement"
 + 45% | "real-world improvement"
 > "Verify outputs at inference instead of training bigger models"
-@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281
+@ "Scaling Verification vs Policy Learning" | https://arxiv.org/abs/2602.12281 | "peer-reviewed preprint from arXiv, Feb 2026"
